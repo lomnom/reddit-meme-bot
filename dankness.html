@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<head>
+
+
+<script id="engine">
+function HELP(){
+    if (document.getElementById("helped?").innerHTML=="yes"){
+        alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls random from [subreddit] - retreives random post from custom subredit\n69 - noice\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!)")
+    }else{
+        alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls random from [subreddit] - retreives random post from custom subredit\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!)")
+        document.getElementById("helped?").innerHTML="yes"
+    }
+}
+
+function randomOutColor(){
+	var randomColor = Math.floor(Math.random()*16777215).toString(16);
+	var style="color:#"+randomColor+";font-size:200% ;-webkit-text-stroke-width: 2px;-webkit-text-stroke-color: orange;"
+	console.log(style)
+	document.getElementById("output").style=style
+}
+
+function EVALUATE(){
+	var dank=document.getElementById("dankness").value;
+	var dankness=dank.toLowerCase();
+
+	randomOutColor()
+    document.getElementById("imgOut").innerHTML = "";
+    document.getElementById("credits").innerHTML = ""
+
+    if (dankness=="69"){
+        document.getElementById("output").innerHTML = "noice"
+        document.getElementById("panicc?").innerHTML = "kalm"
+    }
+
+    
+    else if (dankness=="random meme pls"){
+        // Create a request variable and assign a new XMLHttpRequest object to it.
+        var request = new XMLHttpRequest()
+
+        // Open a new connection, using the GET request on the URL endpoint
+        request.open('GET', 'https://meme-api.herokuapp.com/gimme', true)
+
+        request.onload = function () {
+        // Begin accessing JSON data here
+        var data = JSON.parse(this.response)
+
+        var out = "<img style=\"border:5px solid black\" align=middle src=\""+data.url+"\"></img>"
+        document.getElementById("imgOut").innerHTML = out
+        console.log(out)
+
+        document.getElementById("credits").innerHTML = "upvotes: " + data.ups + "<br />\
+        credits:<br />\
+        maker: <a href=\"https:\/\/reddit.com\/user\/" + data.author + "\">u\/" + data.author+ "</a><br /> \
+        subreddit: <a href=\"https:\/\/reddit.com\/r\/" + data.subreddit + "\">" + "r/" + data.subreddit + "</a><br />\
+        title: " + data.title + "<br />\
+        postLink: <a href=\"" + data.postLink+"\">" + data.postLink + "</a>"
+        }
+
+        // Send request
+        request.send()
+
+        document.getElementById("output").innerHTML = "MEMEBOT SAYS: "
+        document.getElementById("panicc?").innerHTML = "kalm"
+    }
+    
+    else if (dankness.startsWith("pls random from ")){
+        subreddit=dankness.split(" ").splice(-1)[0]
+        var request = new XMLHttpRequest()
+
+        // Open a new connection, using the GET request on the URL endpoint
+        request.open('GET', 'https://meme-api.herokuapp.com/gimme/'+subreddit, true)
+
+        request.onload = function () {
+        // Begin accessing JSON data here
+        var data = JSON.parse(this.response)
+
+        var out = "<img style=\"border:5px solid black\" align=middle src=\""+data.url+"\"></img>"
+        if(data.code==404){
+            document.getElementById("imgOut").innerHTML = "subreddit not found!!"
+        }else if (data.code==400){
+            document.getElementById("imgOut").innerHTML = "the requested subreddit does not have posts with videos or gifs!!!"
+        }
+        else{
+            document.getElementById("imgOut").innerHTML = out
+        }
+        console.log(out)
+
+        document.getElementById("credits").innerHTML = "upvotes: " + data.ups + "<br />\
+        credits:<br />\
+        maker: <a href=\"https:\/\/reddit.com\/user\/" + data.author + "\">u\/" + data.author+ "</a><br /> \
+        subreddit: <a href=\"https:\/\/reddit.com\/r\/" + data.subreddit + "\">" + "r/" + data.subreddit + "</a><br />\
+        title: " + data.title + "<br />\
+        postLink: <a href=\"" + data.postLink+"\">" + data.postLink + "</a>"
+        }
+
+        // Send request
+        request.send()
+
+        document.getElementById("output").innerHTML = "MEMEBOT SAYS: "
+        document.getElementById("panicc?").innerHTML = "kalm"
+    }
+
+    else if (document.getElementById("panicc?").innerHTML == "PANICC"){
+
+        document.getElementById("output").innerHTML = "MEMEBOT SAYS: uhu i don kno what u saying ):"
+        document.getElementById("panicc?").innerHTML = "PANICC"
+    }
+
+    else{
+        document.getElementById("output").innerHTML = "MEMEBOT SAYS: i dont know what u r saying ):"
+        document.getElementById("panicc?").innerHTML = "PANICC"
+    }
+}
+</script>
+
+<style type="text/css">
+	@font-face {
+  font-family: 'Audiowide';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/audiowide/v9/l7gdbjpo0cum0ckerWCdmA_OMRlABolM.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Audiowide';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/audiowide/v9/l7gdbjpo0cum0ckerWCdlg_OMRlABg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body{
+    font-family: "Audiowide";
+    background: lightblue url("https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Original_Doge_meme.jpg/300px-Original_Doge_meme.jpg") no-repeat fixed center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+img{
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+    }
+</style>
+
+</head>
+<body>
+    <p align="middle" style="font-size:300% ;color:cyan;-webkit-text-stroke-width: 2px;-webkit-text-stroke-color: orange;">talk to memebot v5.8</p>
+
+    <p align="middle">
+    <input id="dankness" name="dankness">
+
+    <button onclick="EVALUATE()">TALK TO MEMEBOT</button>    <button onclick="HELP()">?</button>
+
+    </p>
+    <br />
+
+    <p align="middle"  id="output"  style=""></p>
+    <div id=imgOut align=middle></div>
+    <p align="right" id="panicc?"  style="font-size:10% ;color:orange;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
+    <p align="right" id="helped?"  style="font-size:10% ;color:orange;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
+    <p align="right" id="credits"  style="font-size:100% ;color:black;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
+
+
+</body>
