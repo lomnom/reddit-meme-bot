@@ -22,17 +22,17 @@ function HELP(){
 }
 
 function randomOutColor(){
-	var randomColor = Math.floor(Math.random()*16777215).toString(16);
-	var style="color:#"+randomColor+";font-size:200% ;-webkit-text-stroke-width: 2px;-webkit-text-stroke-color: orange;"
-	console.log(style)
-	document.getElementById("output").style=style
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
+    var style="color:#"+randomColor+";font-size:200% ;-webkit-text-stroke-width: 2px;-webkit-text-stroke-color: orange;"
+    console.log(style)
+    document.getElementById("output").style=style
 }
 
 function EVALUATE(){
-	var dank=document.getElementById("dankness").value;
-	var dankness=dank.toLowerCase();
+    var dank=document.getElementById("dankness").value;
+    var dankness=dank.toLowerCase();
 
-	randomOutColor()
+    randomOutColor()
     document.getElementById("imgOut").innerHTML = "";
     document.getElementById("credits").innerHTML = ""
 
@@ -124,7 +124,7 @@ function EVALUATE(){
 </script>
 
 <style type="text/css">
-	@font-face {
+    @font-face {
   font-family: 'Audiowide';
   font-style: normal;
   font-weight: 400;
@@ -150,9 +150,8 @@ body{
 }
 
 img{
-    width: 50%;
-    height: 50%;
-    object-fit: contain;
+    max-width: 60%;
+    height: auto;
     }
 </style>
 
@@ -170,7 +169,7 @@ img{
     <div class="col-sm-8">
 
     <p align=middle>
-    <input id="dankness" name="dankness" >
+    <input id="dankness" name="dankness">
     <button class="btn btn-xs btn-default" onclick="EVALUATE()">TALK TO MEMEBOT</button>    
     <button class="btn btn-xs btn-default" onclick="HELP()">?</button>
     </p>
