@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <head>
 
+<title>
+MEMEBOT v5.8
+</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="engine">
 function HELP(){
     if (document.getElementById("helped?").innerHTML=="yes"){
-        alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls random from [subreddit] - retreives random post from custom subredit\n69 - noice\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!)")
+        alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls get random from [subreddit] - retreives random post from custom subredit\n69 - noice\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!)")
     }else{
-        alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls random from [subreddit] - retreives random post from custom subredit\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!)")
+        alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls get random from [subreddit] - retreives random post from custom subredit\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!)")
         document.getElementById("helped?").innerHTML="yes"
     }
 }
@@ -26,6 +35,7 @@ function EVALUATE(){
 	randomOutColor()
     document.getElementById("imgOut").innerHTML = "";
     document.getElementById("credits").innerHTML = ""
+
 
     if (dankness=="69"){
         document.getElementById("output").innerHTML = "noice"
@@ -63,7 +73,7 @@ function EVALUATE(){
         document.getElementById("panicc?").innerHTML = "kalm"
     }
     
-    else if (dankness.startsWith("pls random from ")){
+    else if (dankness.startsWith("pls get random from ")){
         subreddit=dankness.split(" ").splice(-1)[0]
         var request = new XMLHttpRequest()
 
@@ -148,21 +158,32 @@ img{
 
 </head>
 <body>
-    <p align="middle" style="font-size:300% ;color:cyan;-webkit-text-stroke-width: 2px;-webkit-text-stroke-color: orange;">talk to memebot v5.8</p>
-
-    <p align="middle">
-    <input id="dankness" name="dankness">
-
-    <button onclick="EVALUATE()">TALK TO MEMEBOT</button>    <button onclick="HELP()">?</button>
-
+<div class="container">
+    <p align="middle" style="font-size:300% ;color:cyan;-webkit-text-stroke-width: 2px;-webkit-text-stroke-color: orange;">
+        talk to memebot 
+        <span style="color:orange;-webkit-text-stroke-width: 0px;-webkit-text-stroke-color: orange;" class="badge">v5.8</span>
     </p>
+
+
+    <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+
+    <input id="dankness" name="dankness" >
+    <button class="btn btn-xs btn-default" onclick="EVALUATE()">TALK TO MEMEBOT</button>    
+    <button class="btn btn-xs btn-default" onclick="HELP()">?</button>
+
+    </div>
+
+    <div class="col-sm-2"></div>
+    </div>
     <br />
 
     <p align="middle"  id="output"  style=""></p>
-    <div id=imgOut align=middle></div>
+    <div id=imgOut align=middle ></div>
     <p align="right" id="panicc?"  style="font-size:10% ;color:orange;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
     <p align="right" id="helped?"  style="font-size:10% ;color:orange;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
     <p align="right" id="credits"  style="font-size:100% ;color:black;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
-
+</div>
 
 </body>
