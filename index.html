@@ -17,7 +17,7 @@ function reroll(){
     second=document.getElementById("prevPost2").innerHTML;
     third=document.getElementById("prevPost3").innerHTML;
 
-    return first+"<br />"+second+"<br />"+third
+    return "first:"+first+"<br />second:"+second+"<br />third:"+third
 }
 function historyAdd(post){
     first=document.getElementById("prevPost1").innerHTML;
@@ -83,6 +83,7 @@ function EVALUATE(){
         postLink: <a href=\"" + data.postLink+"\">" + data.postLink + "</a>"
 
         historyAdd(data.postLink)
+        console.log(data.postLink)
         }
 
         // Send request
@@ -121,6 +122,8 @@ function EVALUATE(){
 
 
         historyAdd(data.postLink)
+        console.log(data.postLink)
+
         }
 
         // Send request
