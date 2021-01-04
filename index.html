@@ -24,7 +24,6 @@ function HELP(){
 function randomOutColor(){
     var randomColor = Math.floor(Math.random()*16777215).toString(16);
     var style="color:#"+randomColor+";font-size:200% ;-webkit-text-stroke-width: 2px;-webkit-text-stroke-color: orange;"
-    console.log(style)
     document.getElementById("output").style=style
 }
 
@@ -56,7 +55,6 @@ function EVALUATE(){
 
         var out = "<img style=\"border:5px solid black\" align=middle src=\""+data.url+"\"></img>"
         document.getElementById("imgOut").innerHTML = out
-        console.log(out)
 
         document.getElementById("credits").innerHTML = "upvotes: " + data.ups + "<br />\
         credits:<br />\
@@ -64,6 +62,8 @@ function EVALUATE(){
         subreddit: <a href=\"https:\/\/reddit.com\/r\/" + data.subreddit + "\">" + "r/" + data.subreddit + "</a><br />\
         title: " + data.title + "<br />\
         postLink: <a href=\"" + data.postLink+"\">" + data.postLink + "</a>"
+
+        console.log(data.postlink)
         }
 
         // Send request
@@ -93,14 +93,15 @@ function EVALUATE(){
         else{
             document.getElementById("imgOut").innerHTML = out
         }
-        console.log(out)
-
         document.getElementById("credits").innerHTML = "upvotes: " + data.ups + "<br />\
         credits:<br />\
         maker: <a href=\"https:\/\/reddit.com\/user\/" + data.author + "\">u\/" + data.author+ "</a><br /> \
         subreddit: <a href=\"https:\/\/reddit.com\/r\/" + data.subreddit + "\">" + "r/" + data.subreddit + "</a><br />\
         title: " + data.title + "<br />\
         postLink: <a href=\"" + data.postLink+"\">" + data.postLink + "</a>"
+
+        
+        console.log(data.postlink)
         }
 
         // Send request
@@ -187,4 +188,3 @@ img{
     <p align="right" id="credits"  style="font-size:100% ;color:black;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
 </div>
 
-</body>
