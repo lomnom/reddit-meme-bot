@@ -12,11 +12,26 @@ MEMEBOT v5.8
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="engine">
+function reroll(){
+    first=document.getElementById("prevPost1").innerHTML;
+    second=document.getElementById("prevPost2").innerHTML;
+    third=document.getElementById("prevPost3").innerHTML;
+
+    return first+"<br />"+second+"<br />"+third
+}
+function historyAdd(post){
+    first=document.getElementById("prevPost1").innerHTML;
+    second=document.getElementById("prevPost2").innerHTML;
+
+    document.getElementById("prevPost3").innerHTML=second;
+    document.getElementById("prevPost2").innerHTML=first;
+    document.getElementById("prevPost1").innerHTML=post;
+}
 function HELP(){
     if (document.getElementById("helped?").innerHTML=="yes"){
         alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls get random from [subreddit] - retreives random post from custom subredit\n69 - noice\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!)")
     }else{
-        alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls get random from [subreddit] - retreives random post from custom subredit\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!)")
+        alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls get random from [subreddit] - retreives random post from custom subredit\nprev posts pls - tells you previous 3 posts\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!)")
         document.getElementById("helped?").innerHTML="yes"
     }
 }
@@ -40,7 +55,11 @@ function EVALUATE(){
         document.getElementById("output").innerHTML = "noice"
         document.getElementById("panicc?").innerHTML = "kalm"
     }
-
+    
+    else if (dankness=="prev posts pls"){
+        document.getElementById("output").innerHTML = reroll()
+        document.getElementById("panicc?").innerHTML = "kalm"
+    }
     
     else if (dankness=="random meme pls"){
         // Create a request variable and assign a new XMLHttpRequest object to it.
@@ -63,7 +82,7 @@ function EVALUATE(){
         title: " + data.title + "<br />\
         postLink: <a href=\"" + data.postLink+"\">" + data.postLink + "</a>"
 
-        console.log(data.postLink)
+        historyAdd(data.postLink)
         }
 
         // Send request
@@ -101,7 +120,7 @@ function EVALUATE(){
         postLink: <a href=\"" + data.postLink+"\">" + data.postLink + "</a>"
 
 
-        console.log(data.postLink)
+        historyAdd(data.postLink)
         }
 
         // Send request
@@ -185,6 +204,11 @@ img{
     <div id=imgOut align=middle ></div>
     <p align="right" id="panicc?"  style="font-size:10% ;color:orange;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
     <p align="right" id="helped?"  style="font-size:10% ;color:orange;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
+
+    <p align="right" id="prevPost1"  style="font-size:10% ;color:orange;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
+    <p align="right" id="prevPost2"  style="font-size:10% ;color:orange;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
+    <p align="right" id="prevPost3"  style="font-size:10% ;color:orange;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
+
     <p align="right" id="credits"  style="font-size:100% ;color:black;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
 </div>
 
