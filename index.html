@@ -18,7 +18,7 @@ function reroll(){
     return "most recent"+posts+"<br />least recent"
 }
 function historyAdd(post){
-    document.getElementById("prevPosts").innerHTML=document.getElementById("prevPosts").innerHTML+"<br />"+post
+    document.getElementById("prevPosts").innerHTML=document.getElementById("prevPosts").innerHTML+"<br /><a href=\""+post+"\">"+post+"</a>"
 }
 function HELP(){
     if (document.getElementById("helped?").innerHTML=="yes"){
@@ -205,4 +205,3 @@ img{
 
     <p align="left" id="prevPosts"  style="font-size:5% ;color:orange;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
 </div>
-
