@@ -17,8 +17,8 @@ function reroll(){
 
     return "most recent"+posts+"<br />least recent"
 }
-function historyAdd(post){
-    document.getElementById("prevPosts").innerHTML=document.getElementById("prevPosts").innerHTML+"<br /><a href=\""+post+"\">"+post+"</a>"
+function historyAdd(post,link){
+    document.getElementById("prevPosts").innerHTML=document.getElementById("prevPosts").innerHTML+"<br /><a href=\""+link+"\">"+post+"</a>"
 }
 function HELP(){
     if (document.getElementById("helped?").innerHTML=="yes"){
@@ -75,7 +75,7 @@ function EVALUATE(){
         title: " + data.title + "<br />\
         postLink: <a href=\"" + data.postLink+"\">" + data.postLink + "</a>"
 
-        historyAdd(data.postLink)
+        historyAdd(data.title,data.postLink)
         console.log(data.postLink)
         }
 
@@ -114,7 +114,7 @@ function EVALUATE(){
         postLink: <a href=\"" + data.postLink+"\">" + data.postLink + "</a>"
 
 
-        historyAdd(data.postLink)
+        historyAdd(data.title,data.postLink)
         console.log(data.postLink)
 
         }
