@@ -14,8 +14,8 @@ MEMEBOT v6.9
 <script id="engine">
 function reroll(){
     posts=document.getElementById("prevPosts").innerHTML;
-
-    return "most recent"+posts+"<br />least recent"
+    document.getElementById("output").style="font-size: 30px"
+    return "memebot says:<br />most recent"+posts+"<br />least recent"
 }
 function historyAdd(post,link){
     document.getElementById("prevPosts").innerHTML=document.getElementById("prevPosts").innerHTML+"<br /><a href=\""+link+"\">"+post+"</a>"
@@ -36,6 +36,7 @@ function randomOutColor(){
 }
 
 function EVALUATE(){
+    document.getElementById("output").style=""
     var dank=document.getElementById("dankness").value;
     var dankness=dank.toLowerCase();
 
