@@ -14,11 +14,11 @@ MEMEBOT v6.9
 <script id="engine">
 function reroll(){
     posts=document.getElementById("prevPosts").innerHTML;
-    document.getElementById("output").style="font-size: 30px"
-    return "memebot says:<br />most recent"+posts+"<br />least recent"
+
+    return "most recent"+posts+"<br />least recent"
 }
-function historyAdd(post,link){
-    document.getElementById("prevPosts").innerHTML=document.getElementById("prevPosts").innerHTML+"<br /><a href=\""+link+"\">"+post+"</a>"
+function historyAdd(post){
+    document.getElementById("prevPosts").innerHTML=document.getElementById("prevPosts").innerHTML+"<br /><a href=\""+post+"\">"+post+"</a>"
 }
 function HELP(){
     if (document.getElementById("helped?").innerHTML=="yes"){
@@ -36,7 +36,6 @@ function randomOutColor(){
 }
 
 function EVALUATE(){
-    document.getElementById("output").style=""
     var dank=document.getElementById("dankness").value;
     var dankness=dank.toLowerCase();
 
@@ -76,7 +75,7 @@ function EVALUATE(){
         title: " + data.title + "<br />\
         postLink: <a href=\"" + data.postLink+"\">" + data.postLink + "</a>"
 
-        historyAdd(data.title,data.postLink)
+        historyAdd(data.postLink)
         console.log(data.postLink)
         }
 
@@ -115,7 +114,7 @@ function EVALUATE(){
         postLink: <a href=\"" + data.postLink+"\">" + data.postLink + "</a>"
 
 
-        historyAdd(data.title,data.postLink)
+        historyAdd(data.postLink)
         console.log(data.postLink)
 
         }
@@ -204,5 +203,5 @@ img{
 
     <p align="right" id="credits"  style="font-size:100% ;color:black;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
 
-    <p align="left" id="prevPosts"  style="visibility:hidden;font-size:5% ;color:orange;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
+    <p align="left" id="prevPosts"  style="font-size:5% ;color:orange;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: orange;"></p>
 </div>
