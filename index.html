@@ -22,7 +22,7 @@ function historyAdd(post){
 }
 function HELP(){
     if (document.getElementById("helped?").innerHTML=="yes"){
-        alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls get random from [subreddit] - retreives random post from custom subredit\n69 - noice\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!)")
+        alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls get random from [subreddit] - retreives random post from custom subredit\n69 - noice\n420 - -69 HP\n21 - TWENY WANGGG\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!)")
     }else{
         alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls get random from [subreddit] - retreives random post from custom subredit\nprev posts pls - tells you previous 3 posts\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!)")
         document.getElementById("helped?").innerHTML="yes"
@@ -45,7 +45,7 @@ function EVALUATE(){
 
 
     if (dankness=="69"){
-        document.getElementById("output").innerHTML = "noice"
+        document.getElementById("output").innerHTML = "MEMEBOT SAYS:<br />noice"
         document.getElementById("panicc?").innerHTML = "kalm"
     }
 
@@ -53,6 +53,10 @@ function EVALUATE(){
         document.getElementById("output").innerHTML = "MEMEBOT SAYS:<br />-69 HP"
     }
     
+    else if (dankness=="21"){
+        document.getElementById("output").innerHTML = "MEMEBOT SAYS:<br />TWENY WANGG"
+    }
+
     else if (dankness=="prev posts pls"){
         document.getElementById("output").innerHTML = reroll()
         document.getElementById("panicc?").innerHTML = "kalm"
