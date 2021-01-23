@@ -15,7 +15,7 @@ MEMEBOT v6.9
 function reroll(){
     posts=document.getElementById("prevPosts").innerHTML;
 
-    return "most recent"+posts+"<br />least recent"
+    return "least recent"+posts+"<br />most recent"
 }
 function historyAdd(post){
     document.getElementById("prevPosts").innerHTML=document.getElementById("prevPosts").innerHTML+"<br /><a href=\""+post+"\">"+post+"</a>"
