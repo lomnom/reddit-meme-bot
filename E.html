@@ -1,0 +1,19 @@
+<head>
+	<script type="text/javascript">
+		function E(count){
+			if (count==1){
+				return "e";
+			}else{
+				return "e("+E(count-1)+")";
+			}
+		};
+		function doE(){
+			document.getElementById('Etext').innerHTML=E(parseInt(document.getElementById('E').value));
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="E" id="E">
+	<button onclick="doE()"><strong>E</strong></button>
+	<p id="Etext"></p>
+</body>
