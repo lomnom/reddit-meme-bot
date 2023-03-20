@@ -22,9 +22,9 @@ function historyAdd(post){
 }
 function HELP(){
     if (document.getElementById("helped?").innerHTML=="yes"){
-        alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls get random from [subreddit] - retreives random post from custom subredit\n69 - noice\n420 - -69 HP\n21 - TWENY WANGGG\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!)")
+        alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls get random from [subreddit] - retreives random post from custom subreddit\n69 - noice\n420 - -69 HP\n21 - TWENY WANGGG\nsocial credits - display credits\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!)")
     }else{
-        alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls get random from [subreddit] - retreives random post from custom subredit\nprev posts pls - tells you previous 3 posts\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!)")
+        alert("my commands:\n\nrandom meme pls - scrapes random meme from reddit\npls get random from [subreddit] - retreives random post from custom subreddit\nprev posts pls - tells you previous 3 posts\nsocial credits - display credits\n\nmore coming soon!\n(by the way, this website only scrapes gifs or images,no videos!!!) ")
         document.getElementById("helped?").innerHTML="yes"
     }
 }
@@ -49,6 +49,10 @@ function EVALUATE(){
         document.getElementById("panicc?").innerHTML = "kalm"
     }
 
+    else if (dankness=="social credits"){
+        document.getElementById("output").innerHTML = "Credits to: <br />- D3vd for the meme api (https://github.com/D3vd/Meme_Api)<br />- reddit for hosting the memes<br />- lomnom for memeBoT (source code for this application at https://github.com/lomnom/reddit-meme-bot)"
+    }
+
     else if (dankness=="420"){
         document.getElementById("output").innerHTML = "MEMEBOT SAYS:<br />-69 HP"
     }
@@ -67,7 +71,7 @@ function EVALUATE(){
         var request = new XMLHttpRequest()
 
         // Open a new connection, using the GET request on the URL endpoint
-        request.open('GET', 'https://meme-api.herokuapp.com/gimme', true)
+        request.open('GET', 'https://meme-api.com/gimme', true)
 
         request.onload = function () {
         // Begin accessing JSON data here
@@ -82,7 +86,7 @@ function EVALUATE(){
         subreddit: <a href=\"https:\/\/reddit.com\/r\/" + data.subreddit + "\">" + "r/" + data.subreddit + "</a><br />\
         title: " + data.title + "<br />\
         postLink: <a href=\"" + data.postLink+"\">" + data.postLink + "</a><br />\
-        nsfw: " + data.nsfw
+        nsfw: " + data.nsfw + " " + data.nsfw ? "(AYO SUSSY :eyes:)" : "(innocent)"
 
         historyAdd(data.postLink)
         console.log(data.postLink)
@@ -100,7 +104,7 @@ function EVALUATE(){
         var request = new XMLHttpRequest()
 
         // Open a new connection, using the GET request on the URL endpoint
-        request.open('GET', 'https://meme-api.herokuapp.com/gimme/'+subreddit, true)
+        request.open('GET', 'https://meme-api.com/gimme/'+subreddit, true)
 
         request.onload = function () {
         // Begin accessing JSON data here
